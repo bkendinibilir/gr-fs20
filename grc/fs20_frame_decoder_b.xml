@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<block>
+  <name>FS20 Frame Decoder</name>
+  <key>fs20_frame_decoder_b</key>
+  <category>FS20</category>
+  <import>import fs20</import>
+  <make>fs20.fs20_frame_decoder_b($(id)_msgq_out, $debug)</make>
+  <param>
+    <name>Debug</name>
+    <key>debug</key>
+	<value>0</value>
+    <type>int</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>msg</type>
+  </source>
+  <doc>
+FS20 frame decoder: this block decodes FS20 frames from FS20 databits 
+(output of "FS20 bit decoder") and outputs FS20 packetbytes as messages.
+
+The decoder checks and removes the parity bits after each 8 databits,
+validate the bit checksum over all databytes and remove the checksum 
+byte at the end.
+
+Output:
+* Byte 1 (HC1): high byte of 2 byte homecode
+* Byte 2 (HC2):  low byte of 2 byte homecode
+* Byte 3 (ADR): address byte
+* Byte 4 (CMD): command byte, if bit 5 is set, an additional byte follows
+* Byte 5 (EXT): extension byte
+  </doc>
+</block>

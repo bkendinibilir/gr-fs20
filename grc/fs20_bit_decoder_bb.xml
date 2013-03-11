@@ -1,0 +1,34 @@
+<block>
+  <name>FS20 Bit Decoder</name>
+  <key>fs20_bit_decoder_bb</key>
+  <category>FS20</category>
+  <import>import fs20</import>
+  <make>fs20.fs20_bit_decoder_bb($samp_rate, $debug)</make>
+  <param>
+    <name>Sampling_rate</name>
+    <key>samp_rate</key>
+	<value>samp_rate</value>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Debug</name>
+    <key>debug</key>
+	<value>1</value>
+    <type>int</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>byte</type>
+  </source>
+  <doc>
+FS20 bit decoder: this block decodes "binary sliced" on-off-keying data to FS20 databits
+
+Parameters:
+* debug = 0-9: print debug messages while decoding bits
+* samp_rate: sampling rate in samples per second
+  </doc>
+</block>
